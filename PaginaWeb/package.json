@@ -4,14 +4,16 @@
   "description": "Proyecto para TecMedex SPA",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/Server.js",
-    "webpack": "webpack --mode development"
+    "dev": "nodemon Server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.5",
     "morgan": "^1.10.0"
   },
