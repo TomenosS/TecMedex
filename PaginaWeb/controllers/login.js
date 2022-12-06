@@ -3,9 +3,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const login = async (req, res) => {
-  const { rut, prevision, contraseña } = req.body;
+  const { rut, contraseña } = req.body;
 
-  Cliente.findOne({ rut, prevision }).then((cliente) => {
+  Cliente.findOne({ rut }).then((cliente) => {
     if (!cliente) {
       return res.json({ mensaje: "Cliente no encontrado" });
     }

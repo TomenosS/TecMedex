@@ -1,7 +1,7 @@
 {
-  "name": "PaginaWeb TecMedex SPA",
+  "name": "backend-login-and-register",
   "version": "1.0.0",
-  "description": "Proyecto para TecMedex SPA",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon Server.js"
@@ -10,23 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.7.5",
-    "morgan": "^1.10.0"
+    "mongoose": "^6.2.4"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^9.1.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "nodemon": "^2.0.20",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-strap": "^0.0.1",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0"
+    "nodemon": "^2.0.15"
   }
 }

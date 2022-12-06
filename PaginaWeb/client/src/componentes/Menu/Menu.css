@@ -1,0 +1,178 @@
+.logo{
+	width: 100px;
+	float: left;
+	padding-left: 25px;
+}
+
+#Menu {
+	background: #f7ceff;
+	height: 100px;
+	padding-left: 18px;
+    text-align: center;
+}
+
+#Menu h3{
+    float: right;
+    position: relative;
+    margin-top: 35px;
+	margin-right: 20px;
+    border: 1px solid;
+	padding: 3px;
+	background-color: white;
+	border-radius: 10px;
+	color: #eeb4fa;
+}
+
+#Menu .listaNoOrder, .listaLinks{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+	float:none;
+
+}
+
+#Menu .listaLinks{
+    float: left;
+    display: inline;
+    position: relative;
+    padding-right: 3em;
+	padding-top: 20px;
+}
+
+
+#Menu a{
+    font-weight: bold;
+    line-height: 53px;
+    text-decoration: none;
+    font-size: 20px;
+    color: aliceblue;
+    padding:10px 10px ;
+}
+
+#Menu a:hover{
+    color:#8de3fd;
+    background: #eeb4fa;
+    border-radius: 10px;
+}
+
+#Menu #botonCerrar{
+	font-weight: bold;
+    line-height: 53px;
+    text-decoration: none;
+	background-color: #eeb4fa ;
+	border-radius: 10px;
+    font-size: 20px;
+    color: aliceblue;
+    padding:10px 10px ;
+}
+
+#Menu input {
+	display: none;
+	margin: 0;
+	padding: 0;
+	height: 53px;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer
+}
+
+#Menu label {
+	display: none;
+	line-height: 53px;
+	text-align: center;
+	position: absolute;
+	left: 35px
+}
+
+#Menu label:before {
+	font-size: 1.6em;
+	content: "\2261";
+	margin-left: 20px;
+}
+
+#Menu .listaNoOrder.sub-menus {
+	height: auto;
+	overflow: hidden;
+	width: 170px;
+	background: #6dddff;
+	position: absolute;
+	z-index: 99;
+	display: none;
+}
+
+#Menu .listaNoOrder.sub-menus .listaLinks {
+	display: block;
+	width: 100%;
+}
+
+#Menu .listaNoOrder.sub-menus a {
+	color: #FFFFFF;
+	font-size: 16px;
+}
+
+#Menu li:hover ul.sub-menus {
+	display: block
+}
+
+#Menu .listaNoOrder.sub-menus a:hover {
+	background: #000000;
+	color: #011044;
+}
+
+@media screen and (max-width: 1220px) {
+	#Menu {
+		position: relative
+	}
+
+	#Menu .listaNoOrder {
+		background: #f7ceff;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		left: 0;
+		z-index: 3;
+		height: auto;
+		display: none
+	}
+
+	#Menu .listaNoOrder.sub-menus {
+		width: 100%;
+		position: static;
+	}
+
+	#Menu .listaNoOrder.sub-menus a {
+		padding-left: 30px;
+	}
+
+	#Menu .listaLinks {
+		display: block;
+		float: none;
+		width: auto;
+	}
+
+	#Menu input,
+	#Menu label {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block
+	}
+
+	#Menu input {
+		z-index: 4
+	}
+
+	#Menu input:checked+label {
+		color: white
+	}
+
+	#Menu input:checked+label:before {
+		content: "\00d7"
+	}
+
+	#Menu input:checked~.listaNoOrder {
+		display: block
+	}
+}
+

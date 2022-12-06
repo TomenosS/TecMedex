@@ -1,7 +1,7 @@
 const Cliente = require("../modelo/cliente");
 
 const getClienteById = async (req, res) => {
-  const { id } = req.cliente;
+  const { id } = req.user;
 
   if (id.length === 24) {
     Cliente.findById(id).then((cliente) => {

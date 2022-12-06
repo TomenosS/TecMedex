@@ -1,0 +1,128 @@
+.gridLayout{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+
+.formulario_login1{
+    width: 100%;
+    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    position: sticky;
+}
+
+.formulario_tituloLogin1{
+    text-align: center;
+    font-size: 25px;
+    padding: 10px 10px 0px 10px;
+    border-bottom: 30px;
+    border-bottom: 3px solid #8de3fd;
+    border-top: 10px ;
+    margin-bottom: 50px;
+    color: rgb(107, 235, 252);
+}
+
+.contenedorTitulo{
+    width: 90%;
+    margin: auto;
+}
+
+.select_formulario_input1{
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 5%;
+}
+
+#formulario_label1{
+    padding-left: 7%;
+    position: absolute;
+    margin-top: -130px;
+    z-index: -20;
+    color: rgba(0, 0, 0, 1);
+    transition: all 0.2s;
+}
+
+.tablaMedicos{
+    width: 30%;
+    margin: auto;
+    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+}
+
+.tablaMedicos th{
+    padding: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.tablaMedicos td{
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.select_formulario_input1{
+    display:  flex;
+    width: 90%;
+    padding: 20px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.3);
+    margin-bottom: 40px;
+}
+
+.contenedorBoton{
+    padding-left: 5%;
+    padding-bottom: 5%;
+}
+.boton {
+    height: 3em;
+    width: 8em;
+    border: none;
+    border-radius: 10em;
+    background: #000000;
+    font-size: 17px;
+    color: #ffffff;
+    font-weight: 500;
+   }
+   
+   .boton:hover {
+    animation: shake3856 0.3s linear infinite both;
+    cursor: pointer;
+   }
+   
+   @keyframes shake3856 {
+    0% {
+     -webkit-transform: translate(0);
+     transform: translate(0);
+    }
+   
+    20% {
+     -webkit-transform: translate(-2px, 2px);
+     transform: translate(-2px, 2px);
+    }
+   
+    40% {
+     -webkit-transform: translate(-2px, -2px);
+     transform: translate(-2px, -2px);
+    }
+   
+    60% {
+     -webkit-transform: translate(2px, 2px);
+     transform: translate(2px, 2px);
+    }
+   
+    80% {
+     -webkit-transform: translate(2px, -2px);
+     transform: translate(2px, -2px);
+    }
+   
+    100% {
+     -webkit-transform: translate(0);
+     transform: translate(0);
+    }
+   }

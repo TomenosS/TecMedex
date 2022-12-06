@@ -8,5 +8,4 @@ const database = async()=>{
         .catch((error) => console.error(error)); 
 };
 
-
 module.exports = database;
