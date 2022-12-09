@@ -1,10 +1,8 @@
 const Consulta = require("../modelo/consulta");
 
 const addConsultas = async (req, res) => {
-    const { rutCliente, nombreCliente, nombreMedico, especialidadConsulta, regionConsulta, centroConsulta } = req.body;
+    const { nombreMedico, especialidadConsulta, regionConsulta, centroConsulta } = req.body;
     const consulta = new Consulta({
-        rutCliente: rutCliente,
-        nombreCliente: nombreCliente,
         nombreMedico: nombreMedico,
         especialidadConsulta: especialidadConsulta,
         regionConsulta: regionConsulta,
@@ -12,7 +10,7 @@ const addConsultas = async (req, res) => {
     });
     await consulta.save()
     res.json({
-        status: "Consulta guardado"
+        status: "Consulta guardada"
     });
 
 };

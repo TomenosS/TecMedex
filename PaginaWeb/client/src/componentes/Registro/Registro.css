@@ -13,12 +13,12 @@
 .formulario_tituloRegister3{
     text-align: center;
     border-bottom: 30px;
-    border-bottom: 3px solid #8de3fd;
+    border-bottom: 3px solid #f9ebfc;
     border-top: 10px ;
     padding: 0;
     margin-top: 0;
     margin-bottom: 50px;
-    color: rgb(107, 235, 252);
+    color: #816088;
 }
 
 .formulario_input3, .formulario_label3{
@@ -79,46 +79,18 @@
     height: 3em;
     width: 8em;
     border: none;
-    border-radius: 10em;
-    background: #000000;
+    border-radius: 10px;
+    background: #816088;
     font-size: 17px;
     color: #ffffff;
     font-weight: 500;
-   }
+}
    
-   .boton_registro:hover {
-    animation: shake3856 0.3s linear infinite both;
+.boton_registro:hover {
+    animation: 0.3s linear infinite both;
     cursor: pointer;
-   }
-   
-   @keyframes shake3856 {
-    0% {
-     -webkit-transform: translate(0);
-     transform: translate(0);
-    }
-   
-    20% {
-     -webkit-transform: translate(-2px, 2px);
-     transform: translate(-2px, 2px);
-    }
-   
-    40% {
-     -webkit-transform: translate(-2px, -2px);
-     transform: translate(-2px, -2px);
-    }
-   
-    60% {
-     -webkit-transform: translate(2px, 2px);
-     transform: translate(2px, 2px);
-    }
-   
-    80% {
-     -webkit-transform: translate(2px, -2px);
-     transform: translate(2px, -2px);
-    }
-   
-    100% {
-     -webkit-transform: translate(0);
-     transform: translate(0);
-    }
-   }
+}
+
+.textoLogin{
+    margin-left: 4%;
+}

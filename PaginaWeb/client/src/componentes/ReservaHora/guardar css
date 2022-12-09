@@ -1,6 +1,6 @@
 .gridLayout{
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 30% 70%;
     width: 90%;
     margin-left: 50px;
     margin-top: 50px;
@@ -66,12 +66,6 @@
     padding-left: 20px;
 }
 
-.tablaMedicos input{
-    width: 140px;
-    height: 90px;
-    border: 0;
-    text-align: center;
-}
 .select_formulario_input1{
     display:  flex;
     width: 90%;
@@ -109,4 +103,3 @@
 .textoLogin{
     margin-left: 4%;
 }
-

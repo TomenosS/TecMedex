@@ -1,0 +1,14 @@
+.contImagenInicio{
+    margin: 0;
+}
+
+.carousel{
+    margin: 2rem 2rem;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+}
+
+.contenedorCartas{
+    margin: 4rem 2rem 4rem 5rem;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}

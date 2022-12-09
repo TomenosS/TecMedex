@@ -1,22 +1,24 @@
 import { Menu } from "../../componentes/Menu/Menu";
 import { Perfil } from "../../componentes/Perfil/Perfil";
-import { InicioPerfil } from "../../componentes/Perfil/InicioPerfil";
+import { Informacion } from "../../componentes/Perfil/Informacion";
 import { Footer } from "../../componentes/Footer/Footer";
 import "./Perfil.css"
 
-const PerfilPage = () => {
+const InformacionPage = () => {
     return (
         <div>
             <Menu />
+
             <div className="flex">
                 <Perfil />
                 <div className="content">
-                    <InicioPerfil />
+                    <Informacion />
                 </div>
+
             </div>
             <Footer />
         </div>
     )
 }
 
-export default PerfilPage
+export default InformacionPage

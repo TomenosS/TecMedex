@@ -5,10 +5,11 @@
 }
 
 #Menu {
-	background: #f7ceff;
+	background: #a9e7fa;
 	height: 100px;
 	padding-left: 18px;
     text-align: center;
+	box-shadow: 0 0 20px 1px rgba(0,0,0,0.2);
 }
 
 #Menu h3{
@@ -20,7 +21,7 @@
 	padding: 3px;
 	background-color: white;
 	border-radius: 10px;
-	color: #eeb4fa;
+	color: #a9e7fa;
 }
 
 #Menu .listaNoOrder, .listaLinks{
@@ -51,20 +52,24 @@
 }
 
 #Menu a:hover{
-    color:#8de3fd;
-    background: #eeb4fa;
+    color:#816088;
+    background: #f9ebfc;
     border-radius: 10px;
+	box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
 }
 
 #Menu #botonCerrar{
 	font-weight: bold;
-    line-height: 53px;
+    line-height: 30px;
     text-decoration: none;
-	background-color: #eeb4fa ;
+	background-color: #f9ebfc ;
 	border-radius: 10px;
     font-size: 20px;
-    color: aliceblue;
-    padding:10px 10px ;
+    color: #816088;
+}
+
+#Menu #botonCerrar:hover{
+	box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
 }
 
 #Menu input {
@@ -126,7 +131,7 @@
 	}
 
 	#Menu .listaNoOrder {
-		background: #f7ceff;
+		background: #a9e7fa;
 		position: absolute;
 		top: 100%;
 		right: 0;

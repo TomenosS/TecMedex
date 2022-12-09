@@ -4,55 +4,13 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react"
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button} from "reactstrap"
 export function ReservaHoraCliente() {
 
     const navigate = useNavigate();
 
     // Filtrado
-    const [medicos, setMedicos] = useState([]);
-    const [tablaMedicos, setTablaMedicos] = useState([]);
-    const [busqueda, setBusqueda] = useState("");
-
-    const [inputs, setInputs] = useState({
-        centro: "",
-        region: "",
-        especialidad: ""
-    })
-    const { centro, region, especialidad } = inputs;
-
-    const HandleChange = (e) => {
-        setInputs({ ...inputs, [e.target.name]: e.target.value });
-    };
-
-    const search = async (e) => {
-        e.preventDefault();
-        setBusqueda(e.target.value);
-        filtrar(e.target.value);
-    }
-
-    const API = "http://localhost:5005/api-getArrayMedicos"
-    const showData = async () => {
-        const response = await fetch(API)
-        const data = await response.json()
-        console.log(data)
-        setMedicos(data)
-        setTablaMedicos(data);
-    }
-
-    const filtrar = (terminoBusqueda) => {
-        let resultado = tablaMedicos.filter((elemento) => {
-            if (elemento.centro.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
-                elemento.region.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
-                elemento.especialidad.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())) {
-                return elemento;
-            }
-        });
-        setMedicos(resultado);
-    }
-    useEffect(() => {
-        showData()
-    }, [])
+    
 
     // Token
     const [name, setName] = useState();
@@ -75,73 +33,58 @@ export function ReservaHoraCliente() {
 
 
     // Guardar consulta
-    const [mensaje, setMensaje] = useState();
-    const [loading, setLoading] = useState(false);
+    const [consulta, setConsulta] = useState([]);
+    const [medico, setMedico] = useState([]);
 
-    const [consulta, setConsulta] = useState({
-        rutCliente: "",
-        nombreCliente: "",
-        nombreMedico: "",
-        especialidadConsulta: "",
-        regionConsulta: "",
-        centroConsulta: ""
-
-    })
-    const { rutCliente, nombreCliente, nombreMedico, especialidadConsulta, regionConsulta, centroConsulta } = consulta;
-
-    const hChange = (e) => {
-        setConsulta({ ...consulta, [e.target.name]: e.target.value });
-        console.log(e.target.value)
-    }
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const Consulta = {
-            rutCliente, nombreCliente, nombreMedico, especialidadConsulta, regionConsulta, centroConsulta,
-        };
-        setLoading(true);
+    const getMedicos = async () => {
         await axios
-            .post("http://localhost:5005/api-registerConsulta", Consulta)
-            .then((res) => {
-                const { data } = res;
-                setMensaje(data.mensaje);
-                setConsulta({
-                    rutCliente: "",
-                    nombreCliente: "",
-                    nombreMedico: "",
-                    especialidadConsulta: "",
-                    regionConsulta: "",
-                    centroConsulta: ""
-                });
-                setTimeout(() => {
-                    setMensaje("");
-                }, 1500);
-            })
-            .catch((error) => {
-                console.error(error);
-                setMensaje("Hubo un error");
-                setTimeout(() => {
-                    setMensaje("");
-                }, 1500);
-            });
-
-        setLoading(false);
+            .get("http://localhost:5005/api-getMedicos")
+            .then(({ data }) => setMedico(data.medicos));
     };
+
+    const getConsulta = async () => {
+        return await axios
+            .get("http://localhost:5005/api-getConsulta")
+            .then(({ data }) => setConsulta(data.consultas))
+            .catch((error) => console.error(error));
+    };
+
+    useEffect(() => {
+        getMedicos();
+        getConsulta();
+    }, []);
+
+    const addConsulta = async (medico) => {
+        const { nombreMedico, especialidadConsulta, regionConsulta, centroConsulta } = medico;
+
+        await axios.post("http://localhost:5005/api-registerConsulta", { nombreMedico, especialidadConsulta, regionConsulta, centroConsulta });
+
+        getMedicos();
+        getConsulta();
+    };
+
+    const [Medicos, setMedicosArray] = useState([])
+    const LoadProductos = () => {
+        fetch("http://localhost:5005/api-getArrayMedicos")
+            .then(res => res.json())
+            .then(TodosProductos => setMedicosArray(TodosProductos))
+    }
+
+    LoadProductos()
 
 
     if (token) {
         return (
             <div className="gridLayout">
                 <div >
-                    <form className="formulario_login1" onChange={(e) => search(e)}>
+                    <form className="formulario_login1" >
                         <div className="contenedorTitulo">
                             <h3 className="formulario_tituloLogin1">Ingrese los datos para hacer su consulta</h3>
                         </div>
-                        
+
 
                         <select className="select_formulario_input1" htmlFor="centro"
-                            value={centro}
                             name="centro"
-                            onChange={(e) => HandleChange(e)}
                         >
                             <option >-Seleccione un Centro-</option>
                             <option >Integra Medica</option>
@@ -151,9 +94,7 @@ export function ReservaHoraCliente() {
                         <label id="formulario_label1" >Centro Medico</label>
 
                         <select className="select_formulario_input1" htmlFor="region"
-                            value={region}
                             name="region"
-                            onChange={(e) => HandleChange(e)}
                         >
                             <option >-Seleccione la Región-</option>
                             <option >I Región de Tarapacá</option>
@@ -177,12 +118,10 @@ export function ReservaHoraCliente() {
                         <label id="formulario_label1" >Region</label>
 
                         <select className="select_formulario_input1" htmlFor="especialidad"
-                            value={especialidad}
                             name="especialidad"
-                            onChange={(e) => HandleChange(e)}
                         >
                             <option>-Seleccione el area de especialidad-</option>
-                            <option>Medicina General ( Mayor a 15 años)</option>
+                            <option>Medicina General (Mayor a 15 años)</option>
                             <option>Pediatría y consultas infantiles</option>
                             <option>Ginecología y Obstetricia</option>
                             <option>Traumatologia y Ortopedia Adulto</option>
@@ -193,11 +132,9 @@ export function ReservaHoraCliente() {
                         <div className="contenedorBoton">
                             <button type="submit" className="boton_registro">Mostrar todos</button>
                         </div>
-                        
-
                     </form>
                 </div>
-                <table className="tablaMedicos" onSubmit={(e) => onSubmit(e)} onChange={HandleChange} value={busqueda}>
+                <table className="tablaMedicos" >
                     <thead className="head">
                         <tr>
                             <th scope="col">Médico</th>
@@ -208,20 +145,21 @@ export function ReservaHoraCliente() {
                         </tr>
                     </thead>
                     <tbody>
-                        {medicos &&
-                            medicos.map((medico) => (
-                                <tr key={medico._id}>
-                                    <td value={nombreMedico} name="medico" onChange={(e) => hChange(e)}>{medico.nombre}</td>
-                                    <td value={especialidadConsulta} name="especialidad" onChange={(e) => hChange(e)}>{medico.especialidad}</td>
-                                    <td value={regionConsulta} name="region" onChange={(e) => hChange(e)}>{medico.region}</td>
-                                    <td value={centroConsulta} name="centro" onChange={(e) => hChange(e)}>{medico.centro}</td>
-                                    <td>
-                                        <button type="submit" >
-                                            {loading ? "Cargando..." : "Registrar consulta"}
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
+                        {Medicos.map(eachMedico => (
+                            <tr key={eachMedico._id}>
+                                <td>{eachMedico.nombreMedico}</td>
+                                <td>{eachMedico.especialidadConsulta}</td>
+                                <td>{eachMedico.regionConsulta}</td>
+                                <td>{eachMedico.centroConsulta}</td>
+                                <td>
+                                    {!eachMedico.enConsulta ? (
+                                        <Button color="primary" onClick={() => addConsulta(eachMedico)}>Registrar consulta</Button>
+                                    ) : (
+                                        <Button color="success">Consulta realizada</Button>
+                                    )}
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
@@ -230,7 +168,7 @@ export function ReservaHoraCliente() {
         return (
             <>
                 <h1> No has iniciado Sesión</h1>
-                <button className="boton" type="submit" onClick={() => navigate("/DatosReserva")} >Haz click para volver a iniciar sesion</button>
+                <button className="boton_registro" type="submit" onClick={() => navigate("/DatosReserva")} >Haz click para volver a iniciar sesion</button>
             </>
         )
     }

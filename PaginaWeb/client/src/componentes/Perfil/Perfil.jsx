@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import * as FaIcons from "react-icons/fa"
+
 import "./Perfil.css"
 
 export function Perfil() {
@@ -28,26 +30,24 @@ export function Perfil() {
     }, [token]);
 
     if (token) {
-        return <div>
-            <div>
-                <div className="navegador">
-                    <ul className="navegadorLinks">
-                        <li className="linkComponente">
-                            <Link to="/Perfil">Inicio</Link>
-                        </li>
-                        {/* <li className="linkComponente">
-                        <Link to="/GestionDeUsuario">Gestionar Usuario</Link>
+        return <>
+            <div id="navegador" className="sidebar ">
+                <ul className="navegadorLinks">
+                    <li className="linkComponente">
+                        <NavLink to="/InicioPerfil" className="text-dark rounded py-2 w-100 d-inline-block px-3" exact activeclassname="active"><FaIcons.FaHome/> Inicio</NavLink>
                     </li>
                     <li className="linkComponente">
-                        <Link to="/GestionDePedidos">Pedidos</Link>
+                        <NavLink to="/ResultadosConsultas" className="text-dark rounded py-2 w-100 d-inline-block px-3" exact activeclassname="active"><FaIcons.FaBars/> Resultados</NavLink>
                     </li>
                     <li className="linkComponente">
-                        <Link to="/GestionDeProductos">Lista de productos</Link>
-                    </li> */}
-                    </ul>
-                </div>
+                        <NavLink to="/ListaConsultas" className="text-dark rounded py-2 w-100 d-inline-block px-3" exact activeclassname="active"><FaIcons.FaCalendarAlt/>  Gestionar consultas</NavLink>
+                    </li>
+                    <li className="linkComponente">
+                        <NavLink to="/InformacionUsuario" className="text-dark rounded py-2 w-100 d-inline-block px-3" exact activeclassname="active"><FaIcons.FaInfoCircle/> Información de Usuario</NavLink>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </>
     } else {
         return (
             <>

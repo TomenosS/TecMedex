@@ -4,10 +4,11 @@ import logo from './logo.png';
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function Menu(){
     const [name, setName] = useState();
-
+    const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
@@ -25,6 +26,7 @@ export function Menu(){
 
     const handleLogout = () => {
         localStorage.removeItem("token");
+        navigate("/DatosReserva");
     }
 
     if (token){
@@ -39,7 +41,7 @@ export function Menu(){
                         <li className="listaLinks"><Link to="/ReservaHora">Reserva tu hora!</Link></li>
                         <li className="listaLinks"><Link to="/Perfil">Perfil</Link></li>
                         <li className="listaLinks"><Link to="/SobreNosotros">Sobre nosotros</Link></li>
-                        <li className="listaLinks"><a id="botonCerrar" type="submit" onClick={handleLogout} ><Link to="/DatosReserva">Cerrar Sesion</Link></a></li>
+                        <li className="listaLinks"><a id="botonCerrar" type="submit" onClick={handleLogout} >Cerrar Sesion</a></li>
                     </ul>
                     <h3>TecMedex SPA</h3>
                 </nav>

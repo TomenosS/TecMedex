@@ -1,0 +1,148 @@
+.header #TextoSobre {
+    text-align: center;
+}
+
+#TextoSobre {
+    color: white;
+    margin: 1;
+    background-color: #816088;
+}
+
+div h1 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3rem;
+    transition: box-shadow 0.3s ease;
+    margin: 1rem 0;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.sobre {
+    margin: 0 auto;
+}
+
+.Parrafo p{
+    font-size: 200px;
+}
+div section {
+    transition: box-shadow 0.3s ease;
+    background-color: #efefef;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0;
+    width: 100%;
+}
+
+div section:hover {
+    box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
+}
+
+div section h1,
+div section p {
+    margin: 1rem;
+}
+
+.inicio {
+    border: 3px white solid;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    margin: 10px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+.correo {
+    border: 3px white solid;
+    border-style: solid;
+    border-color: orange;
+    margin: 10px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+#position {
+    position: relative;
+}
+
+#foot {
+    padding: 0em 0;
+    text-align: justify;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+p {
+    text-align: center;
+}
+
+#map {
+    height: 90%;
+}
+
+#Containersobre{
+    display: flex;
+    margin: 10px;
+}
+
+
+.card-sobre {
+    width: 100%;
+    cursor: pointer;
+    padding: 50px;
+    color: white;
+}
+
+.content-sobre {
+    text-align: center;
+    position: relative;
+    transition: all 2.25s;
+    background-color: #816088;
+    padding: 5em;
+    transform-style: preserve-3d;
+    border-radius: 20px;
+    box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
+}
+
+.card-sobre:hover .content-sobre {
+    transform: rotateY(0.5turn);
+}
+
+.front-sobre,
+.back-sobre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 2em;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.title-sobre {
+    transform: translateZ(5rem);
+    font-size: 2rem;
+}
+
+.subtitle-sobre {
+    transform: translateZ(2rem);
+}
+
+.back-sobre {
+    transform: rotateY(0.5turn);
+    background-color: #816088;
+    border-radius: 20px;
+    box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
+}
+
+.description-sobre {
+    transform: translateZ(3rem);
+}
+
+.map{
+    flex:1 1 45rem;
+    width: 90%;
+    object-fit: cover;
+}

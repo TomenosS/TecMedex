@@ -6,5 +6,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
+main {
+  max-width: 100%;
+  overflow: hidden;
+}
   

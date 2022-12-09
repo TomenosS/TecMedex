@@ -1,26 +1,38 @@
-const bcrypt = require("bcrypt");
 const Consulta = require("../modelo/consulta");
+const Medico = require("../modelo/medico");
 
 const registerConsulta = async (req, res) => {
-    const { rutCliente, nombreCliente, nombreMedico, especialidadConsulta, regionConsulta, centroConsulta } = req.body;
+    const { nombreMedico, especialidadConsulta, regionConsulta, centroConsulta } = req.body;
+    const estaEnMedicos = await Medico.findOne({ nombreMedico });
+    const noEstaVacio = nombreMedico != "" && especialidadConsulta !== "" && regionConsulta !== "" && centroConsulta !== "";
+    const estaEnLaConsulta = await Consulta.findOne({ nombreMedico });
 
-    if (error) res.json({ error });
-    else {
-        const nuevaConsulta = new Consulta({
-            rutCliente,
-            nombreCliente,
-            nombreMedico,
-            especialidadConsulta,
-            regionConsulta,
-            centroConsulta,
+
+    if (!estaEnMedicos) {
+        res.status(400).json({
+            mensaje: "Este medico no está registrado",
         });
+    } else if (noEstaVacio && !estaEnLaConsulta) {
+        const newConsulta = new Consulta({ nombreMedico, especialidadConsulta, regionConsulta, centroConsulta });
 
-        nuevaConsulta
-            .save()
+        await Medico.findByIdAndUpdate(
+            estaEnMedicos?._id,
+            { enConsulta: true, nombreMedico, especialidadConsulta, regionConsulta, centroConsulta },
+            { new: true }
+        )
             .then((consulta) => {
-                res.json({ mensaje: "Consulta guardada correctamente", consulta });
+                newConsulta.save();
+                res.json({
+                    mensaje: `La consulta fue agregada`,
+                    consulta,
+                });
             })
             .catch((error) => console.error(error));
+
+    } else if (estaEnLaConsulta) {
+        res.status(400).json({
+            mensaje: "La consulta ya ha sido realizada",
+        });
     }
 
 };

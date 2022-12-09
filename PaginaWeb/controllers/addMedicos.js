@@ -1,14 +1,13 @@
 const Medicos = require("../modelo/medico");
 
 const addMedicos = async (req, res) => {
-    const { rut, nombre, correo, especialidad, region, centro} = req.body;
+    const { nombreMedico, correoMedico, especialidadConsulta, regionConsulta, centroConsulta} = req.body;
     const medico = new Medicos({
-        rut: rut,
-        nombre: nombre,
-        correo: correo,
-        especialidad: especialidad,
-        region: region,
-        centro: centro
+        nombreMedico: nombreMedico,
+        correoMedico: correoMedico,
+        especialidadConsulta: especialidadConsulta,
+        regionConsulta: regionConsulta,
+        centroConsulta: centroConsulta
     });
     await medico.save()
     res.json({

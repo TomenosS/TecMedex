@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const ClienteSchema = new Schema({
-    rut: {type: String, require: true, unique: true},
+    rut: {type: String, require: true},
     nombre: {type: String, require: true},
     correo: {type: String, require: true},
     contraseña: {type: String, require: true},

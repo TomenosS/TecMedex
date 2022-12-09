@@ -17,12 +17,14 @@
 .formulario_tituloLogin2{
     text-align: center;
     border-bottom: 30px;
-    border-bottom: 3px solid #8de3fd;
+    border-bottom: 3px solid #f9ebfc;
     border-top: 10px ;
     padding: 0;
     margin-top: 0;
     margin-bottom: 50px;
-    color: rgb(107, 235, 252);
+    margin-left: 5%;
+    margin-right: 9%;
+    color: #816088;
 }
 
 .formulario_input2, .formulario_label2{
@@ -36,6 +38,7 @@
     border: 1px solid rgba(0,0,0,0.3);
     margin-bottom: 40px;
     margin-left: 20px;
+    border-radius: 10px;
 }
 
 
@@ -60,56 +63,30 @@
     border: 1px solid rgba(0,0,0,0.3);
     margin-bottom: 40px;
     margin-left: 20px;
+    border-radius: 10px;
 }
 
 .botonInicio{
-    margin-left: 4%;
+    margin-left: 2%;
 }
-.boton {
+.botonDatos {
     height: 3em;
     width: 8em;
     border: none;
-    border-radius: 10em;
-    background: #000000;
+    border-radius: 10px;
+    background: #816088;
     
     font-size: 17px;
     color: #ffffff;
     font-weight: 500;
-   }
+}
    
-   .boton:hover {
-    animation: shake3856 0.3s linear infinite both;
+.botonDatos:hover {
+    animation:  0.3s linear infinite both;
     cursor: pointer;
-   }
-   
-   @keyframes shake3856 {
-    0% {
-     -webkit-transform: translate(0);
-     transform: translate(0);
-    }
-   
-    20% {
-     -webkit-transform: translate(-2px, 2px);
-     transform: translate(-2px, 2px);
-    }
-   
-    40% {
-     -webkit-transform: translate(-2px, -2px);
-     transform: translate(-2px, -2px);
-    }
-   
-    60% {
-     -webkit-transform: translate(2px, 2px);
-     transform: translate(2px, 2px);
-    }
-   
-    80% {
-     -webkit-transform: translate(2px, -2px);
-     transform: translate(2px, -2px);
-    }
-   
-    100% {
-     -webkit-transform: translate(0);
-     transform: translate(0);
-    }
-   }
+}
+
+.textoRegistro{
+    margin-left: 4%;
+}
+

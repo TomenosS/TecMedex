@@ -1,17 +1,17 @@
 import { Menu } from "../../componentes/Menu/Menu";
 import { Perfil } from "../../componentes/Perfil/Perfil";
-import { InicioPerfil } from "../../componentes/Perfil/InicioPerfil";
+import { Consultas } from "../../componentes/Perfil/Consultas";
 import { Footer } from "../../componentes/Footer/Footer";
 import "./Perfil.css"
 
-const PerfilPage = () => {
+const ConsultasPage = () => {
     return (
         <div>
             <Menu />
             <div className="flex">
                 <Perfil />
                 <div className="content">
-                    <InicioPerfil />
+                    <Consultas />
                 </div>
             </div>
             <Footer />
@@ -19,4 +19,4 @@ const PerfilPage = () => {
     )
 }
 
-export default PerfilPage
+export default ConsultasPage

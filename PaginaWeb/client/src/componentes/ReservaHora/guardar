@@ -1,0 +1,166 @@
+<Modal isOpen={state.abierto} >
+    <ModalHeader>
+        Confirmacion
+    </ModalHeader>
+    <ModalBody>
+        <FormGroup>
+            <Label htmlFor="nombreMedico">Medico</Label>
+            <Input value={nombreMedico} type="text" id="nombreMedico"
+                placeholder={medico.nombre}
+            >
+            </Input>
+        </FormGroup>
+
+        <FormGroup>
+            <Label htmlFor="especialidadConsulta">Especialidad</Label>
+            <Input value={especialidadConsulta} type="text" id="especialidadConsulta"
+                placeholder={medico.especialidad}
+                onChange={(e) => hChange(e)}>
+            </Input>
+        </FormGroup>
+
+        <FormGroup>
+            <Label htmlFor="regionConsulta">Region</Label>
+            <Input value={regionConsulta} type="text" id="regionConsulta"
+                placeholder={medico.region}
+                onChange={(e) => hChange(e)}>
+            </Input>
+        </FormGroup>
+
+        <FormGroup>
+            <Label htmlFor="centroConsulta">Centro</Label>
+            <Input value={centroConsulta} type="text" id="centroConsulta"
+                placeholder={medico.centro}
+                onChange={(e) => hChange(e)}>
+            </Input>
+        </FormGroup>
+    </ModalBody>
+
+    <ModalFooter>
+        <Button color="primary"> Enviar Consulta</Button>
+        <p></p>
+        <Button color="secondary" onClick={abrirModal}>Atras</Button>
+    </ModalFooter>
+</Modal>
+
+const [mensaje, setMensaje] = useState();
+    const [loading, setLoading] = useState(false);
+
+    const [consulta, setConsulta] = useState({
+        nombreMedico: "",
+        especialidadConsulta: "",
+        regionConsulta: "",
+        centroConsulta: ""
+
+    })
+    let { nombreMedico, especialidadConsulta, regionConsulta, centroConsulta } = consulta;
+
+    const igualarN = (medicoProp) =>{
+        nombreMedico = medicoProp;
+        return nombreMedico;
+    }
+    const igualarE = (medicoProp) =>{
+        especialidadConsulta = medicoProp;
+        return especialidadConsulta;
+    }
+    const igualarR = (medicoProp) =>{
+        regionConsulta = medicoProp;
+        return regionConsulta;
+    }
+    const igualarC = (medicoProp) =>{
+        centroConsulta = medicoProp;
+        return centroConsulta;
+    }
+
+    const hChange = (e) => {
+        setConsulta({ ...consulta, [e.target.name]: e.target.value });
+        console.log(e.target.value)
+    }
+    const onSubmit = async (e) => {
+        
+        e.preventDefault();
+        const Consulta = {
+            nombreMedico, especialidadConsulta, regionConsulta, centroConsulta,
+        };
+        setLoading(true);
+        await axios
+            .post("http://localhost:5005/api-registerConsulta", Consulta)
+            .then((res) => {
+                const { data } = res;
+                setMensaje(data.mensaje);
+                setConsulta({
+                    nombreMedico: "",
+                    especialidadConsulta: "",
+                    regionConsulta: "",
+                    centroConsulta: ""
+                });
+                setTimeout(() => {
+                    setMensaje("");
+                }, 1500);
+            })
+            .catch((error) => {
+                console.error(error);
+                setMensaje("Hubo un error");
+                setTimeout(() => {
+                    setMensaje("");
+                }, 1500);
+            });
+
+        setLoading(false);
+    };
+
+    {medicos.map(medico => (
+        <tr onSubmit={(e) => onSubmit(e)} key={medico._id}>
+            
+            <td value={igualarN(medico.nombre)} name="medico" onChange={(e) => hChange(e)}>{medico.nombre}</td>
+            <td value={igualarE(medico.especialidad)} name="especialidad" onChange={(e) => hChange(e)}>{medico.especialidad}</td>
+            <td value={igualarR(medico.region)} name="region" onChange={(e) => hChange(e)}>{medico.region}</td>
+            <td value={igualarC(medico.centro)} name="centro" onChange={(e) => hChange(e)}>{medico.centro}</td>
+            <td><Button onClick={(e) => onSubmit(e)}>Registrar consulta</Button></td>                                    
+        </tr>
+    ))
+}
+
+const [medicos, setMedicos] = useState([]);
+    const [tablaMedicos, setTablaMedicos] = useState([]);
+    const [busqueda, setBusqueda] = useState("");
+
+    const [inputs, setInputs] = useState({
+        centro: "",
+        region: "",
+        especialidad: ""
+    })
+    const { centro, region, especialidad } = inputs;
+
+    const HandleChange = (e) => {
+        setInputs({ ...inputs, [e.target.name]: e.target.value });
+    };
+
+    const search = async (e) => {
+        e.preventDefault();
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+    }
+
+    const API = "http://localhost:5005/api-getArrayMedicos"
+    const showData = async () => {
+        const response = await fetch(API)
+        const data = await response.json()
+        console.log(data)
+        setMedicos(data)
+        setTablaMedicos(data);
+    }
+
+    const filtrar = (terminoBusqueda) => {
+        let resultado = tablaMedicos.filter((elemento) => {
+            if (elemento.centro.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
+                elemento.region.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
+                elemento.especialidad.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())) {
+                return elemento;
+            }
+        });
+        setMedicos(resultado);
+    }
+    useEffect(() => {
+        showData()
+    }, [])

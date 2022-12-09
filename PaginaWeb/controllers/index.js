@@ -9,6 +9,8 @@ const getArrayMedicos = require("./getArrayMedicos")
 const getArrayConsultas = require("./getArrayConsultas")
 const addConsulta = require("./addConsulta")
 const registerConsulta = require("./registerConsulta")
+const getConsulta = require("./getConsulta")
+const delConsulta = require("./delConsulta")
 
 module.exports={
     getClientes,
@@ -21,5 +23,7 @@ module.exports={
     getArrayMedicos,
     getArrayConsultas,
     addConsulta,
-    registerConsulta
+    registerConsulta,
+    getConsulta,
+    delConsulta
 };

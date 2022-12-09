@@ -1,67 +1,61 @@
 import "./Footer.css"
+import logo from "../Menu/logo.png"
 
-export function Footer() {
-    return <div className="DivFooter">
-        <footer>
-            <div className="container__footer">
-                <div className="box__footer">
-                    <div className="servicios">
-                        <h3>Servicios</h3>
-                        <ul className="listServicios">
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="box__footer">
-                    <div className="examenes">
-                        <h3>Examenes/Laboratorio</h3>
-                        <ul className="listServicios">
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="box__footer">
-                    <div className="examenes">
-                        <h3>Clinicas</h3>
-                        <ul className="listServicios">
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="box__footer">
-                    <div className="examenes">
-                        <h3>FQA</h3>
-                        <ul className="listServicios">
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                            <li className="cadaServicio">a</li>
-                        </ul>
-                    </div>
-                </div>
+import React from 'react';
+import { CDBFooter, CDBFooterLink, CDBBox, CDBBtn, CDBIcon } from 'cdbreact';
 
-                <div className="box__footer">
-                    <h3>Redes Sociales</h3>
-                    <a href="https://www.facebook.com/profile.php?id=100063487151360"> <i className="fab fa-facebook-square"></i> Facebook</a>
-                    <a href="https://twitter.com/SushiNowARG"><i className="fab fa-twitter-square"></i> Twitter</a>
-                    <a href="https://www.instagram.com/fukusuke.matsuo/"><i className="fab fa-instagram-square"></i> Instagram</a>
-                </div>
-
-            </div>
-
-            <div className="box__copyright">
-                <hr />
-                    <p>Todos los derechos reservados © 2022 <b>TecMedex SPA</b></p>
-            </div>
-            </footer>
-    </div>
-}
+export function Footer () {
+  return (
+    <CDBFooter className="">
+      <CDBBox display="flex" flex="column" className="mx-auto py-5" style={{ width: '90%' }}>
+        <CDBBox display="flex" justifyContent="between" className="flex-wrap">
+          <CDBBox>
+            <a href="/" className="d-flex align-items-center p-0 text-dark " >
+              <img alt="logo" src={logo} width="100px" />
+              <span className="ml-3 h5 font-weight-bold">TecMedex</span>
+            </a>
+            <p className="my-3" style={{ width: '250px' }}>
+                Entregamos recursos de alta calidad y herramientas para facilitar
+                la gestion de sus consultas!
+                Eligenos:)            
+            </p>
+            
+          </CDBBox>
+          <CDBBox>
+            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
+              Servicios
+            </p>
+            <CDBBox flex="column" style={{ cursor: 'pointer', padding: '0' }}>
+              <CDBFooterLink href="/">Reserva tu hora</CDBFooterLink>
+              <CDBFooterLink href="/">Gestiona tus examenes</CDBFooterLink>
+              <CDBFooterLink href="/">Servicio al cliente</CDBFooterLink>
+              <CDBFooterLink href="/">Descarga tus examenes</CDBFooterLink>
+            </CDBBox>
+          </CDBBox>
+          <CDBBox>
+            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
+              Exámenes
+            </p>
+            <CDBBox flex="column" style={{ cursor: 'pointer', padding: '0' }}>
+              <CDBFooterLink href="/">Imagenológico</CDBFooterLink>
+              <CDBFooterLink href="/">Laboratorio</CDBFooterLink>
+              <CDBFooterLink href="/">Oftalmológico</CDBFooterLink>
+            </CDBBox>
+          </CDBBox>
+          <CDBBox>
+            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
+              FQA
+            </p>
+            <CDBBox flex="column" style={{ cursor: 'pointer', padding: '0' }}>
+              <CDBFooterLink href="/">Información del paciente</CDBFooterLink>
+              <CDBFooterLink href="/">Centros clínicos</CDBFooterLink>
+              <CDBFooterLink href="/">Seguridad de la cuenta</CDBFooterLink>
+              <CDBFooterLink href="/ContactoEmpresa">Contacto</CDBFooterLink>
+            </CDBBox>
+          </CDBBox>
+        </CDBBox>
+        <small className="text-center mt-5">&copy; TecMedex SPA, 2022. Todos los derechos reservados.</small>
+      </CDBBox>
+    </CDBFooter>
+  );
+};
